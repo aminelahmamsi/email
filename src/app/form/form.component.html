@@ -1,0 +1,86 @@
+<h2>HTML Template-driven form Example!</h2>
+
+<form #emailForm="ngForm" (ngSubmit)="sendForm()">
+    <div class="form-group">
+        <label> To: </label>
+        <input class="form-control" 
+            type="text" 
+            required 
+            [(ngModel)]="email.to" 
+            name="sto" 
+            #sto="ngModel"
+            [ngClass]="sto.valid || sto.pristine ? '': 'bg-danger'"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+
+    </div>
+    <div class="form-group">
+        <label> From: </label>
+        <input class="form-control" 
+            type="text" 
+            required 
+            [(ngModel)]="email.from" 
+            name="sfrom" 
+            #sfrom="ngModel"
+            [ngClass]="sfrom.valid || sfrom.pristine ? '': 'bg-danger'"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+
+    </div>
+    <div class="form-group">    
+        <label> Subject: </label>
+        <input class="form-control" 
+            type="text" 
+            required 
+            [(ngModel)]="email.subject" 
+            name="ssubject" 
+            #ssubject="ngModel"
+            [ngClass]="ssubject.valid || ssubject.pristine ? '': 'bg-danger'"
+            [maxLength]="50"
+            [minLength]="10">
+
+
+        <div class="alert alert-danger" *ngIf="semail.touched && !semail.valid">
+            <div *ngIf="semail.errors && semail.errors['required']">
+                Email is required.
+            </div>
+            <div *ngIf="semail.errors && semail.errors['pattern']">
+                Email does not match the required pattern.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label> Body: </label>
+        <input class="form-control" 
+            type="text" 
+            required 
+            [(ngModel)]="email.body" 
+            name="sbody" 
+            #sbody="ngModel">
+
+    </div>
+
+    <br>
+    <div class="text-right">
+        <button class="btn btn-primary btn-sm mr-1" 
+            type="submit" 
+            [disabled]="!emailForm.form.valid">   
+            Submit Form
+        </button>
+        &nbsp;
+        <button class="btn btn-primary btn-sm mr-1" 
+            type="button" 
+            (click)="clear()">            
+            Reset form
+        </button>
+    </div>
+</form>
+
+<h3> Form data: </h3>
+
+<br>
+<p class="bg-success">
+    To: {{email.to}} <br>
+    From: {{email.from}} <br>
+    Subject: {{email.subject}} <br>
+    Body: {{email.body}} <br>
+</p>
