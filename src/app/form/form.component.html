@@ -100,3 +100,20 @@
     Subject: {{email.subject}} <br>
     Body: {{email.body}} <br>
 </p>
+
+
+<div *ngIf="emailsList; else nolist">
+    <h3>
+        We have a list!! 
+    </h3>
+
+    <ul class="list-group">
+        <li *ngFor="let email of emailsList" class="list-group-item">
+            {{email.to}}, {{email.from}}, {{email.subject}}, {{email.body}}
+        </li>
+    </ul>
+</div>
+<ng-template #nolist>
+    <br><br>
+    <p><b>There is no list</b></p>
+</ng-template>
