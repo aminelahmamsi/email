@@ -34,14 +34,15 @@ export class FormComponent implements OnInit {
                              body: email.body ? email.body : "No content" });
   }
 
-  sendForm(): void {
-    window.alert("Received information: " + this.email.to + " " + this.email.from + " " + this.email.subject + " " + this.email.body);
-    this.addEmailTolist(this.email);
-  }
-
   clear(): void {
 
     this.emailForm.reset();
+  }
+
+  sendForm(): void {
+    window.alert("The email " + this.email.subject + "has been sent to " + this.email.to);
+    this.addEmailTolist(this.email);
+    this.clear();
   }
 
 
