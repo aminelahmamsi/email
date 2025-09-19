@@ -9,7 +9,7 @@ import { ViewChild } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
-  email: Email;
+  email: Email = { to: "", from: "", subject: "", body: null };
   emailsList: Email[] = [];
   @ViewChild('emailForm') emailForm: any;
 
@@ -25,9 +25,6 @@ export class FormComponent implements OnInit {
   }
 
   addEmailTolist(email: Email): void {
-    if (this.emailsList == null) {
-     this.emailsList = []; 
-    }
     this.emailsList.push({ to: email.to, 
                              from: email.from, 
                              subject: email.subject, 
