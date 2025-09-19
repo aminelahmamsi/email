@@ -12,6 +12,14 @@
             [ngClass]="sto.valid || sto.pristine ? '': 'bg-danger'"
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
 
+            <div class="alert alert-danger" *ngIf="semail.touched && !semail.valid">
+            <div *ngIf="semail.errors && semail.errors['required']">
+                A destination email is required.
+            </div>
+            <div *ngIf="semail.errors && semail.errors['pattern']">
+                The email does not match the required pattern.
+            </div>
+        </div>
     </div>
     <div class="form-group">
         <label> From: </label>
@@ -23,7 +31,15 @@
             #sfrom="ngModel"
             [ngClass]="sfrom.valid || sfrom.pristine ? '': 'bg-danger'"
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-
+        
+            <div class="alert alert-danger" *ngIf="semail.touched && !semail.valid">
+            <div *ngIf="semail.errors && semail.errors['required']">
+                A source email is required.
+            </div>
+            <div *ngIf="semail.errors && semail.errors['pattern']">
+                The email does not match the required pattern.
+            </div>
+        </div>
     </div>
     <div class="form-group">    
         <label> Subject: </label>
@@ -34,16 +50,16 @@
             name="ssubject" 
             #ssubject="ngModel"
             [ngClass]="ssubject.valid || ssubject.pristine ? '': 'bg-danger'"
-            [maxLength]="50"
-            [minLength]="10">
+            maxlength="50"
+            minlength="10">
 
 
         <div class="alert alert-danger" *ngIf="semail.touched && !semail.valid">
             <div *ngIf="semail.errors && semail.errors['required']">
-                Email is required.
+                Subject is required.
             </div>
             <div *ngIf="semail.errors && semail.errors['pattern']">
-                Email does not match the required pattern.
+                The subject does not match the required pattern.
             </div>
         </div>
     </div>
