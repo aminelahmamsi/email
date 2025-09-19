@@ -103,9 +103,7 @@
 
 
 <div *ngIf="emailsList; else nolist">
-    <h3>
-        We have a list!! 
-    </h3>
+    <h3> List of emails: </h3>
 
     <ul class="list-group">
         <li *ngFor="let email of emailsList" class="list-group-item">
@@ -115,5 +113,5 @@
 </div>
 <ng-template #nolist>
     <br><br>
-    <p><b>There is no list</b></p>
+    <p><b>The list of emails is empty</b></p>
 </ng-template>
