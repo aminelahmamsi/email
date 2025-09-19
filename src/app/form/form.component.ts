@@ -24,16 +24,6 @@ export class FormComponent implements OnInit {
     };
   }
 
-  sendForm(): void {
-    window.alert("Received information: " + this.email.to + " " + this.email.from + " " + this.email.subject + " " + this.email.body);
-    push{this.email};
-  }
-
-  clear(): void {
-
-    this.emailForm.reset();
-  }
-
   addEmailTolist(email: Email): void {
     if (this.emailsList == null) {
      this.emailsList = []; 
@@ -42,6 +32,16 @@ export class FormComponent implements OnInit {
                              from: email.from, 
                              subject: email.subject, 
                              body: email.body ? email.body : "No content" });
+  }
+
+  sendForm(): void {
+    window.alert("Received information: " + this.email.to + " " + this.email.from + " " + this.email.subject + " " + this.email.body);
+    this.addEmailTolist(this.email);
+  }
+
+  clear(): void {
+
+    this.emailForm.reset();
   }
 
 
